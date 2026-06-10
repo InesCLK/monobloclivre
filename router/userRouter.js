@@ -1,6 +1,7 @@
 import { Router } from "express"
 import { prisma } from "../db.js"
 import { hash, compare } from "bcrypt"
+import { authGuard } from "../middleware/authGuard.js"
 
 
 const userRouter = Router()
@@ -56,6 +57,24 @@ userRouter.post("/login", async(req,res)=>{
          })
     }
 })
+
+userRouter.get('/dashboard', authGuard, async(req,res)=>{
+    const user = await prisma.user.findUnique({
+        where: {
+            id: parseInt(req.session.userId)
+        },
+        include: {
+            books:true
+        }
+    })
+    res.render('pages/dashboard.twig', {
+        userLogged: req.userLogged,
+        user: user
+    })
+})
+
+
+
 
 
 

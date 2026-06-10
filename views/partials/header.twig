@@ -1,10 +1,20 @@
 <header>
-    <ul>
-        <li>
-            <a href="/login">Connexion</a>
-        </li>
-        <li>
-        <a href="/subscribe">Inscription</a>
-        </li>
-    </ul>
+	{% if userLogged %}
+        <p>Bonjour {{userLogged.firstName}}</p>
+		<ul>
+
+			<li>
+				<a href="/addbook">ajout de livre</a>
+			</li>
+			<li>
+				<a href="/logout">deconnexion</a>
+			</li>
+		</ul>
+	{% else %}
+		<ul>
+
+			<li><a href="/login">Connexion</a></li>
+			<li><a href="/subscribe">Inscription</a></li>
+		</ul>
+	{% endif %}
 </header>

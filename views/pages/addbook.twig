@@ -1,0 +1,20 @@
+{% extends "../layouts/base.twig" %}
+
+{% block main %}
+
+    <h1>Ajout de livre</h1>
+    <section>
+        <form action="/addbook" method="post">
+            <div>
+                <label for="title">Titre</label>
+                <input type="text" id="title" name="title">
+            </div>
+             <div>
+                <label for="author">Auteur</label>
+                <input type="text" id="author" name="author">
+            </div>
+            <button>Valdier</button>
+        </form>
+    </section>
+
+{% endblock %}

@@ -1,6 +1,7 @@
 import express from "express"
 import "dotenv/config"
 import userRouter from "./router/userRouter.js"
+import bookRouter from "./router/bookRouter.js"
 import session from "express-session"
 
 const app = express()
@@ -12,6 +13,7 @@ app.use(session({
     resave: false
 }))
 app.use(userRouter)
+app.use(bookRouter)
 
 app.listen(process.env.PORT, (err)=>{
     if (err) {
