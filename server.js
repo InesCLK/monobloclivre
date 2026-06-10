@@ -7,6 +7,7 @@ import session from "express-session"
 const app = express()
 
 app.use(express.urlencoded({extended: true}))
+app.use(express.static("public"))
 app.use(session({
     saveUninitialized: false,
     secret: process.env.SESSION_SECRET,

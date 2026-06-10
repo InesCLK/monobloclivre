@@ -2,16 +2,16 @@
 
 {% block main %}
 
-    <h1>Ajout de livre</h1>
+    <h1>Modification de livre</h1>
     <section>
-        <form action="/addbook" method="post">
+        <form action="/updatebook/{{book.id}}" method="post">
             <div>
                 <label for="title">Titre</label>
-                <input type="text" id="title" name="title">
+                <input type="text" id="title" name="title" value="{{book.title}}">
             </div>
              <div>
                 <label for="author">Auteur</label>
-                <input type="text" id="author" name="author">
+                <input type="text" id="author" name="author" value="{{book.author}}">
             </div>
             <button>Valdier</button>
         </form>
