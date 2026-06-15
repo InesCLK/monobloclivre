@@ -10,10 +10,16 @@
                     <h2>Titre: {{book.title}}</h2>
                     <p>Auteur: {{book.author}}</p>
                     <div>
-                        <a href="/">Modifier</a>
-                        <a href="/">Supprimer</a>
+                        <a href="/updatebook/{{book.id}}">Modifier</a>
+                        <a href="/deletebook/{{book.id}}">Supprimer</a>
                     </div>
+                    {% if book.image %}
+                    <img src="{{book.image}}" alt="image de {{book.title}}" width="120"> 
+                    {% endif %}
+                    
+
                 </article>
+
             {% endfor %}
 
 		{% else %}

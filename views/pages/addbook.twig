@@ -4,7 +4,7 @@
 
     <h1>Ajout de livre</h1>
     <section>
-        <form action="/addbook" method="post">
+        <form action="/addbook" method="post" enctype="multipart/form-data">
             <div>
                 <label for="title">Titre</label>
                 <input type="text" id="title" name="title">
@@ -12,6 +12,10 @@
              <div>
                 <label for="author">Auteur</label>
                 <input type="text" id="author" name="author">
+            </div>
+            <div>
+                <label for="image">Image de la couverture</label>
+                <input type="file" id="image" name="image" accept="image/">
             </div>
             <button>Valdier</button>
         </form>

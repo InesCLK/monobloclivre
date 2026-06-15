@@ -14,6 +14,8 @@ userRouter.get("/subscribe", (req, res) => {
 
 userRouter.post("/subscribe", async (req,res)=>{
     try {
+        
+        const result = registerUserSchema.safeParse(req.body);
         const hashPassword = await hash(req.body.password, parseInt(process.env.SALT))
         const user = await prisma.user.create({
             data: {

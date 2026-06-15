@@ -1,0 +1,27 @@
+{% extends "../layouts/base.twig" %}
+
+{% block main %}
+
+	<h1>modification de livres</h1>
+	<section>
+		<form action="/updatebook/{{book.id}}" method="post" enctype="multipart/form-data">
+			<div>
+				<label for="title">Titre</label>
+				<input type="text" id="title" name="title" value={{book.title}}>
+			</div>
+			<div>
+				<label for="author">Auteur</label>
+				<input type="text" id="author" name="author" value={{book.author}}>
+			</div>
+			<div>
+				<label for="image">modifier l'image de la couverture</label>
+				<input type="file" id="image" name="image" accept="image/">
+			</div>
+			{% if book.image %}
+				<img src="{{book.image}}" alt="image de {{book.title}}" width="120">
+			{% endif %}
+			<button>modifier</button>
+		</form>
+	</section>
+
+{% endblock %}
