@@ -1,1 +1,29 @@
-@import "tailwindcss";
+@import "tailwindcss";@import "tailwindcss";
+
+/* Police sérif chaleureuse pour les titres + sans-serif lisible pour le texte */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nunito+Sans:wght@400;600;700&display=swap');
+
+/* Thème "librairie" : tons crème, brun, accent terracotta */
+@theme {
+  --color-creme: #f5efe4;
+  --color-creme-fonce: #ece3d2;
+  --color-parchemin: #fbf8f1;
+  --color-brun: #4a3728;
+  --color-brun-clair: #6f5742;
+  --color-terracotta: #b5683f;
+  --color-terracotta-fonce: #9a5230;
+
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans: 'Nunito Sans', system-ui, sans-serif;
+}
+
+/* Style de base appliqué au body */
+body {
+  font-family: var(--font-sans);
+  color: var(--color-brun);
+  background-color: var(--color-creme);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+}

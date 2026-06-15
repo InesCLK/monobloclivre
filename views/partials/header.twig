@@ -1,22 +1,20 @@
-<header>
-	{% if userLogged %}
-        <p>Bonjour {{userLogged.firstName}}</p>
-		<ul>
-            <li>
-                <a href="/dashboard">Accueil</a>
-            </li>
-			<li>
-				<a href="/addbook">ajout de livre</a>
-			</li>
-			<li>
-				<a href="/logout">deconnexion</a>
-			</li>
-		</ul>
-	{% else %}
-		<ul>
-
-			<li><a href="/login">Connexion</a></li>
-			<li><a href="/subscribe">Inscription</a></li>
-		</ul>
-	{% endif %}
+<header class="bg-brun text-creme shadow-md">
+    <div class="mx-auto max-w-5xl px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <a href="/dashboard" class="font-serif text-2xl font-semibold tracking-wide flex items-center gap-2">
+            📚 Ma Bibliothèque
+        </a>
+        {% if userLogged %}
+            <nav class="flex items-center gap-2 sm:gap-4 flex-wrap">
+                <span class="text-creme-fonce text-sm italic">Bonjour {{ userLogged.firstName }}</span>
+                <a href="/dashboard" class="px-3 py-1.5 rounded-md hover:bg-brun-clair transition-colors">Accueil</a>
+                <a href="/addbook" class="px-3 py-1.5 rounded-md bg-terracotta hover:bg-terracotta-fonce transition-colors font-semibold">+ Ajouter un livre</a>
+                <a href="/logout" class="px-3 py-1.5 rounded-md hover:bg-brun-clair transition-colors">Déconnexion</a>
+            </nav>
+        {% else %}
+            <nav class="flex items-center gap-2 sm:gap-4">
+                <a href="/login" class="px-3 py-1.5 rounded-md hover:bg-brun-clair transition-colors">Connexion</a>
+                <a href="/subscribe" class="px-3 py-1.5 rounded-md bg-terracotta hover:bg-terracotta-fonce transition-colors font-semibold">Inscription</a>
+            </nav>
+        {% endif %}
+    </div>
 </header>

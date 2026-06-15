@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ma Bibliothèque</title>
     <link rel="stylesheet" href="/assets/css/output.css">
 </head>
-<body>
+<body class="min-h-screen bg-creme text-brun">
     {% include "partials/header.twig" %}
-    {% block main %}{% endblock %}
+    <main class="mx-auto max-w-5xl px-4 py-8">
+        {% block main %}{% endblock %}
+    </main>
 </body>
 </html>

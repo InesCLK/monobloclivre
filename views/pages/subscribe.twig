@@ -1,30 +1,38 @@
 {% extends "../layouts/base.twig" %}
 
-
 {% block main %}
-<main>
-    <h1>{{title}}</h1>
-  
-    <section>
-        <form action="/subscribe" method="post">
-            <div>
-                <label for="lastName">Nom</label>
-                <input type="text" id="lastName" name="lastName">
-            </div>
-            <div>
-                <label for="firstName">Prenom</label>
-                <input type="text" id="firstName" name="firstName">
-            </div>
-            <div>
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email">
-            </div>
-            <div>
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password">
-            </div>
-            <button>Valider</button>
-        </form>
-    </section>
-</main>
+
+    <div class="max-w-md mx-auto mt-6">
+        <h1 class="text-3xl font-bold text-brun mb-6 text-center">{{ title }}</h1>
+        <section class="bg-parchemin rounded-xl shadow-sm border border-creme-fonce p-6">
+            <form action="/subscribe" method="post" class="flex flex-col gap-5">
+                <div class="flex flex-col gap-1.5">
+                    <label for="lastName" class="font-semibold text-brun">Nom</label>
+                    <input type="text" id="lastName" name="lastName" required
+                        class="rounded-md border border-creme-fonce bg-creme px-3 py-2 focus:outline-none focus:ring-2 focus:ring-terracotta">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="firstName" class="font-semibold text-brun">Prénom</label>
+                    <input type="text" id="firstName" name="firstName" required
+                        class="rounded-md border border-creme-fonce bg-creme px-3 py-2 focus:outline-none focus:ring-2 focus:ring-terracotta">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="email" class="font-semibold text-brun">Email</label>
+                    <input type="email" id="email" name="email" required
+                        class="rounded-md border border-creme-fonce bg-creme px-3 py-2 focus:outline-none focus:ring-2 focus:ring-terracotta">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="password" class="font-semibold text-brun">Mot de passe</label>
+                    <input type="password" id="password" name="password" required
+                        class="rounded-md border border-creme-fonce bg-creme px-3 py-2 focus:outline-none focus:ring-2 focus:ring-terracotta">
+                </div>
+                <button class="mt-2 rounded-md bg-terracotta px-5 py-2.5 text-creme font-semibold hover:bg-terracotta-fonce transition-colors">Valider</button>
+            </form>
+            <p class="mt-4 text-center text-sm text-brun-clair">
+                Déjà inscrit ?
+                <a href="/login" class="text-terracotta-fonce font-semibold hover:underline">Connectez-vous</a>
+            </p>
+        </section>
+    </div>
+
 {% endblock %}

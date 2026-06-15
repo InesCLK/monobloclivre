@@ -1,33 +1,44 @@
 {% extends "../layouts/base.twig" %}
 
 {% block main %}
-    <p>{{error}}</p>
-	<h1>Dashboard</h1>
-	<section>
-		{% if user.books|length > 0 %}
-            {% for book in user.books %}
-                <article>
-                    <h2>Titre: {{book.title}}</h2>
-                    <p>Auteur: {{book.author}}</p>
-                    <div>
-                        <a href="/updatebook/{{book.id}}">Modifier</a>
-                        <a href="/deletebook/{{book.id}}">Supprimer</a>
-                    </div>
-                    {% if book.image %}
-                    <img src="{{book.image}}" alt="image de {{book.title}}" width="120"> 
-                    {% endif %}
-                    
 
-                </article>
+    {% if error %}
+        <p class="mb-4 rounded-md bg-terracotta/10 border border-terracotta px-4 py-2 text-terracotta-fonce">{{ error }}</p>
+    {% endif %}
 
-            {% endfor %}
+    <div class="flex items-center justify-between mb-6">
+        <h1 class="text-3xl font-bold text-brun">Ma collection</h1>
+        <a href="/addbook" class="rounded-md bg-terracotta px-4 py-2 text-creme font-semibold hover:bg-terracotta-fonce transition-colors">+ Ajouter un livre</a>
+    </div>
 
-		{% else %}
-				<p>Aucun livre dispo</p>
-		{% endif %}
-	</section>
+    <section>
+        {% if user.books|length > 0 %}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {% for book in user.books %}
+                    <article class="flex flex-col bg-parchemin rounded-xl shadow-sm border border-creme-fonce overflow-hidden hover:shadow-md transition-shadow">
+                        {% if book.image %}
+                            <img src="{{ book.image }}" alt="Couverture de {{ book.title }}" class="h-56 w-full object-cover">
+                        {% else %}
+                            <div class="h-56 w-full flex items-center justify-center bg-creme-fonce text-brun-clair text-5xl">📖</div>
+                        {% endif %}
+                        <div class="flex flex-col flex-1 p-4">
+                            <h2 class="text-xl font-semibold text-brun leading-snug">{{ book.title }}</h2>
+                            <p class="text-brun-clair italic mt-1">par {{ book.author }}</p>
+                            <div class="mt-auto pt-4 flex gap-2">
+                                <a href="/updatebook/{{ book.id }}" class="flex-1 text-center rounded-md border border-brun px-3 py-1.5 text-brun hover:bg-brun hover:text-creme transition-colors">Modifier</a>
+                                <a href="/deletebook/{{ book.id }}" class="flex-1 text-center rounded-md bg-terracotta px-3 py-1.5 text-creme hover:bg-terracotta-fonce transition-colors" onclick="return confirm('Supprimer ce livre ?')">Supprimer</a>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center py-20 bg-parchemin rounded-xl border border-dashed border-creme-fonce">
+                <p class="text-5xl mb-4">📚</p>
+                <p class="text-brun-clair text-lg">Aucun livre dans votre bibliothèque pour le moment.</p>
+                <a href="/addbook" class="inline-block mt-4 rounded-md bg-terracotta px-5 py-2 text-creme font-semibold hover:bg-terracotta-fonce transition-colors">Ajouter mon premier livre</a>
+            </div>
+        {% endif %}
+    </section>
 
 {% endblock %}
-
-{# si on a des livre on les affiche #}
-{# sinon on affiche pas de livre dispo #}

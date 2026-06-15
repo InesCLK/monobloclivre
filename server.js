@@ -17,6 +17,10 @@ app.use(session({
 app.use(userRouter)
 app.use(bookRouter)
 
+app.get("/", (req, res) => {
+    res.redirect("/login")
+})
+
 app.listen(process.env.PORT, (err) => {
     if (err) {
         console.log(err);
