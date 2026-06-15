@@ -1,7 +1,7 @@
 {% extends "../layouts/base.twig" %}
 
 {% block main %}
-
+    <p>{{error}}</p>
 	<h1>Dashboard</h1>
 	<section>
 		{% if user.books|length > 0 %}

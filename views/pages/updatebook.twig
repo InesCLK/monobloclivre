@@ -2,26 +2,34 @@
 
 {% block main %}
 
-	<h1>modification de livres</h1>
-	<section>
-		<form action="/updatebook/{{book.id}}" method="post" enctype="multipart/form-data">
-			<div>
-				<label for="title">Titre</label>
-				<input type="text" id="title" name="title" value={{book.title}}>
-			</div>
-			<div>
-				<label for="author">Auteur</label>
-				<input type="text" id="author" name="author" value={{book.author}}>
-			</div>
-			<div>
-				<label for="image">modifier l'image de la couverture</label>
-				<input type="file" id="image" name="image" accept="image/">
-			</div>
-			{% if book.image %}
-				<img src="{{book.image}}" alt="image de {{book.title}}" width="120">
-			{% endif %}
-			<button>modifier</button>
-		</form>
-	</section>
+    <div class="max-w-lg mx-auto">
+        <h1 class="text-3xl font-bold text-brun mb-6">Modifier le livre</h1>
+        <section class="bg-parchemin rounded-xl shadow-sm border border-creme-fonce p-6">
+            <form action="/updatebook/{{ book.id }}" method="post" enctype="multipart/form-data" class="flex flex-col gap-5">
+                <div class="flex flex-col gap-1.5">
+                    <label for="title" class="font-semibold text-brun">Titre</label>
+                    <input type="text" id="title" name="title" value="{{ book.title }}" required
+                        class="rounded-md border border-creme-fonce bg-creme px-3 py-2 focus:outline-none focus:ring-2 focus:ring-terracotta">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="author" class="font-semibold text-brun">Auteur</label>
+                    <input type="text" id="author" name="author" value="{{ book.author }}" required
+                        class="rounded-md border border-creme-fonce bg-creme px-3 py-2 focus:outline-none focus:ring-2 focus:ring-terracotta">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="image" class="font-semibold text-brun">Modifier l'image de la couverture</label>
+                    <input type="file" id="image" name="image" accept="image/*"
+                        class="text-sm text-brun-clair file:mr-3 file:rounded-md file:border-0 file:bg-brun file:px-4 file:py-2 file:text-creme file:cursor-pointer hover:file:bg-brun-clair">
+                </div>
+                {% if book.image %}
+                    <div class="flex flex-col gap-1.5">
+                        <span class="text-sm text-brun-clair">Couverture actuelle :</span>
+                        <img src="{{ book.image }}" alt="Couverture de {{ book.title }}" class="h-40 w-auto rounded-md border border-creme-fonce object-cover">
+                    </div>
+                {% endif %}
+                <button class="mt-2 rounded-md bg-terracotta px-5 py-2.5 text-creme font-semibold hover:bg-terracotta-fonce transition-colors">Modifier</button>
+            </form>
+        </section>
+    </div>
 
 {% endblock %}

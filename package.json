@@ -1,11 +1,12 @@
 {
   "name": "monobloclivre",
   "version": "1.0.0",
+  "type": "module",
   "description": "super app de gestion de livres",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind":"npx @tailwindcss/cli -i ./public/assets/css/input.css -o ./public/assets/css/output.css --watch"
+    "tailwind": "npx @tailwindcss/cli -i ./public/assets/css/input.css -o ./public/assets/css/output.css --watch"
   },
   "author": "Thomas Oliver",
   "license": "ISC",
@@ -23,6 +24,6 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "prisma": "^6.19.3"
+    "prisma": "^7.8.0"
   }
 }

@@ -12,6 +12,7 @@ bookRouter.get("/addbook", authGuard, (req, res) => {
 })
 
 bookRouter.post("/addbook", authGuard, upload.single("image"), async (req, res) => {
+
     try {
         const book = await prisma.book.create({
             data: {
