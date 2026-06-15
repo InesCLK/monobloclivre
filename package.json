@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "tailwind": "npx @tailwindcss/cli -i ./public/assets/css/input.css -o ./public/assets/css/output.css --watch"
   },
-  "author": "Thomas Oliver",
+  "author": "Inès CLK",
   "license": "ISC",
   "dependencies": {
     "@prisma/adapter-mariadb": "^7.8.0",
