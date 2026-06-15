@@ -2,22 +2,69 @@
 
 {% block main %}
 
-<main>
-    <h1>Login</h1>
-    <section>
-        <p>{{error}}</p>
-        <form action="/login" method="post">
-            <div>
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email">
-            </div>
-            <div>
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password">
-            </div>
-            <button>Valider</button>
-        </form>
-    </section>
-</main>
+<div class="grid lg:grid-cols-2 gap-8 items-stretch min-h-[70vh] -mt-2">
+
+    {# Panneau gauche : ambiance bibliothèque #}
+    <div class="hidden lg:flex flex-col justify-between rounded-2xl bg-brun text-creme p-10 relative overflow-hidden">
+        <div class="relative z-10">
+            <p class="text-sm uppercase tracking-[0.2em] text-creme/60">Votre bibliothèque</p>
+            <h2 class="mt-4 text-4xl font-serif font-semibold leading-tight">Chaque livre<br>a sa place.</h2>
+            <p class="mt-4 text-creme/70 max-w-xs leading-relaxed">Rangez, retrouvez et partagez votre collection. Reprenez la lecture là où vous l'avez laissée.</p>
+        </div>
+
+        {# Rangée de tranches de livres dessinée en CSS #}
+        <div class="relative z-10 flex items-end gap-2 h-32 mt-8">
+            <div class="w-8 h-28 rounded-t-sm bg-terracotta"></div>
+            <div class="w-7 h-32 rounded-t-sm bg-creme/80"></div>
+            <div class="w-9 h-24 rounded-t-sm bg-terracotta-fonce"></div>
+            <div class="w-6 h-30 rounded-t-sm bg-creme-fonce"></div>
+            <div class="w-8 h-28 rounded-t-sm bg-creme/60"></div>
+            <div class="w-7 h-32 rounded-t-sm bg-terracotta"></div>
+            <div class="w-9 h-26 rounded-t-sm bg-creme/80"></div>
+        </div>
+
+        {# Halo décoratif #}
+        <div class="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-terracotta/20 blur-2xl"></div>
+    </div>
+
+    {# Panneau droit : formulaire #}
+    <div class="flex flex-col justify-center">
+        <div class="w-full max-w-md mx-auto">
+            <span class="text-4xl">📖</span>
+            <h1 class="mt-3 text-3xl font-bold text-brun">Bon retour</h1>
+            <p class="mt-1 text-brun-clair">Connectez-vous pour accéder à vos livres.</p>
+
+            {% if error %}
+                <p class="mt-5 rounded-lg bg-terracotta/10 border border-terracotta px-4 py-2.5 text-terracotta-fonce text-sm">{{ error }}</p>
+            {% endif %}
+
+            <form action="/login" method="post" class="mt-6 flex flex-col gap-5">
+                <div class="flex flex-col gap-1.5">
+                    <label for="email" class="text-sm font-semibold text-brun">Email</label>
+                    <div class="flex items-center gap-2 rounded-lg border border-creme-fonce bg-parchemin px-3 focus-within:ring-2 focus-within:ring-terracotta focus-within:border-terracotta transition">
+                        <span class="text-brun-clair">✉️</span>
+                        <input type="email" id="email" name="email" required placeholder="vous@exemple.fr"
+                            class="flex-1 bg-transparent py-2.5 focus:outline-none placeholder:text-brun-clair/50">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="password" class="text-sm font-semibold text-brun">Mot de passe</label>
+                    <div class="flex items-center gap-2 rounded-lg border border-creme-fonce bg-parchemin px-3 focus-within:ring-2 focus-within:ring-terracotta focus-within:border-terracotta transition">
+                        <span class="text-brun-clair">🔒</span>
+                        <input type="password" id="password" name="password" required placeholder="••••••••"
+                            class="flex-1 bg-transparent py-2.5 focus:outline-none placeholder:text-brun-clair/50">
+                    </div>
+                </div>
+                <button class="mt-1 rounded-lg bg-terracotta px-5 py-3 text-creme font-semibold hover:bg-terracotta-fonce transition-colors shadow-sm">Se connecter</button>
+            </form>
+
+            <p class="mt-6 text-center text-sm text-brun-clair">
+                Pas encore de compte ?
+                <a href="/subscribe" class="text-terracotta-fonce font-semibold hover:underline">Créer un compte</a>
+            </p>
+        </div>
+    </div>
+
+</div>
 
 {% endblock %}

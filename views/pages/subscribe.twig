@@ -2,37 +2,66 @@
 
 {% block main %}
 
-    <div class="max-w-md mx-auto mt-6">
-        <h1 class="text-3xl font-bold text-brun mb-6 text-center">{{ title }}</h1>
-        <section class="bg-parchemin rounded-xl shadow-sm border border-creme-fonce p-6">
-            <form action="/subscribe" method="post" class="flex flex-col gap-5">
-                <div class="flex flex-col gap-1.5">
-                    <label for="lastName" class="font-semibold text-brun">Nom</label>
-                    <input type="text" id="lastName" name="lastName" required
-                        class="rounded-md border border-creme-fonce bg-creme px-3 py-2 focus:outline-none focus:ring-2 focus:ring-terracotta">
-                </div>
-                <div class="flex flex-col gap-1.5">
-                    <label for="firstName" class="font-semibold text-brun">Prénom</label>
-                    <input type="text" id="firstName" name="firstName" required
-                        class="rounded-md border border-creme-fonce bg-creme px-3 py-2 focus:outline-none focus:ring-2 focus:ring-terracotta">
-                </div>
-                <div class="flex flex-col gap-1.5">
-                    <label for="email" class="font-semibold text-brun">Email</label>
-                    <input type="email" id="email" name="email" required
-                        class="rounded-md border border-creme-fonce bg-creme px-3 py-2 focus:outline-none focus:ring-2 focus:ring-terracotta">
-                </div>
-                <div class="flex flex-col gap-1.5">
-                    <label for="password" class="font-semibold text-brun">Mot de passe</label>
-                    <input type="password" id="password" name="password" required
-                        class="rounded-md border border-creme-fonce bg-creme px-3 py-2 focus:outline-none focus:ring-2 focus:ring-terracotta">
-                </div>
-                <button class="mt-2 rounded-md bg-terracotta px-5 py-2.5 text-creme font-semibold hover:bg-terracotta-fonce transition-colors">Valider</button>
-            </form>
-            <p class="mt-4 text-center text-sm text-brun-clair">
-                Déjà inscrit ?
-                <a href="/login" class="text-terracotta-fonce font-semibold hover:underline">Connectez-vous</a>
-            </p>
-        </section>
+<div class="grid lg:grid-cols-2 gap-8 items-stretch min-h-[70vh] -mt-2">
+
+    {# Panneau gauche : ambiance #}
+    <div class="hidden lg:flex flex-col justify-between rounded-2xl bg-brun text-creme p-10 relative overflow-hidden">
+        <div class="relative z-10">
+            <p class="text-sm uppercase tracking-[0.2em] text-creme/60">Rejoignez-nous</p>
+            <h2 class="mt-4 text-4xl font-serif font-semibold leading-tight">Commencez<br>votre collection.</h2>
+            <p class="mt-4 text-creme/70 max-w-xs leading-relaxed">Créez votre compte et ajoutez votre premier livre en quelques secondes.</p>
+        </div>
+
+        <ul class="relative z-10 flex flex-col gap-3 mt-8 text-creme/80">
+            <li class="flex items-center gap-3"><span class="text-terracotta">✦</span> Ajoutez vos livres avec couverture</li>
+            <li class="flex items-center gap-3"><span class="text-terracotta">✦</span> Modifiez et organisez à tout moment</li>
+            <li class="flex items-center gap-3"><span class="text-terracotta">✦</span> Votre collection, accessible partout</li>
+        </ul>
+
+        <div class="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-terracotta/20 blur-2xl"></div>
     </div>
+
+    {# Panneau droit : formulaire #}
+    <div class="flex flex-col justify-center">
+        <div class="w-full max-w-md mx-auto">
+            <span class="text-4xl">🪶</span>
+            <h1 class="mt-3 text-3xl font-bold text-brun">Créer un compte</h1>
+            <p class="mt-1 text-brun-clair">Quelques informations et c'est parti.</p>
+
+            <form action="/subscribe" method="post" class="mt-6 flex flex-col gap-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1.5">
+                        <label for="lastName" class="text-sm font-semibold text-brun">Nom</label>
+                        <input type="text" id="lastName" name="lastName" required placeholder="Dupont"
+                            class="rounded-lg border border-creme-fonce bg-parchemin px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-terracotta focus:border-terracotta transition placeholder:text-brun-clair/50">
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <label for="firstName" class="text-sm font-semibold text-brun">Prénom</label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="Marie"
+                            class="rounded-lg border border-creme-fonce bg-parchemin px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-terracotta focus:border-terracotta transition placeholder:text-brun-clair/50">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="email" class="text-sm font-semibold text-brun">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="vous@exemple.fr"
+                        class="rounded-lg border border-creme-fonce bg-parchemin px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-terracotta focus:border-terracotta transition placeholder:text-brun-clair/50">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="password" class="text-sm font-semibold text-brun">Mot de passe</label>
+                    <input type="password" id="password" name="password" required placeholder="8 caractères minimum"
+                        class="rounded-lg border border-creme-fonce bg-parchemin px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-terracotta focus:border-terracotta transition placeholder:text-brun-clair/50">
+                    <span class="text-xs text-brun-clair">Au moins 8 caractères, une majuscule, un chiffre et un caractère spécial.</span>
+                </div>
+                <button class="mt-1 rounded-lg bg-terracotta px-5 py-3 text-creme font-semibold hover:bg-terracotta-fonce transition-colors shadow-sm">Créer mon compte</button>
+            </form>
+
+            <p class="mt-6 text-center text-sm text-brun-clair">
+                Déjà un compte ?
+                <a href="/login" class="text-terracotta-fonce font-semibold hover:underline">Se connecter</a>
+            </p>
+        </div>
+    </div>
+
+</div>
 
 {% endblock %}
