@@ -2,6 +2,7 @@ import { Router } from "express"
 import { prisma } from "../db.js"
 import { hash, compare } from "bcrypt"
 import { authGuard } from "../middleware/authGuard.js"
+import { registerUserSchema } from "../src/schemas/userSchema.js"
 
 
 const userRouter = Router()

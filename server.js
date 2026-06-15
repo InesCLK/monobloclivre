@@ -3,8 +3,6 @@ import "dotenv/config"
 import userRouter from "./router/userRouter.js"
 import bookRouter from "./router/bookRouter.js"
 import session from "express-session"
-import z, { success } from 'zod';
-import { registerUserSchema } from "./src/schemas/userSchema.js"
 
 const app = express()
 
